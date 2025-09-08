@@ -42,6 +42,9 @@ export default function CoursesPage() {
                 <Link href={`/admin/courses/${course._id}`}>
                   <Button variant="outline">Edit</Button>
                 </Link>
+                <Link href={`/admin/courses/${course._id}/modules`}>
+                  <Button variant="secondary">Modules</Button>
+                </Link>
                 <Button
                   variant="destructive"
                   onClick={() => dispatch(deleteCourse(course._id))}
