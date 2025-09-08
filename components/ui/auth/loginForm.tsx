@@ -35,8 +35,13 @@ export function LoginForm() {
 
     try {
       const resultAction = await dispatch(loginUser({ email, password }));
+      console.log(resultAction, "result action");
       // @ts-ignore
-      if (resultAction.payload?.user) {
+      if (resultAction.payload?.user.role === "admin") {
+        router.push("/admin");
+      } else if (resultAction.payload?.user.role === "user") {
+        router.push("/user");
+      } else {
         router.push("/");
       }
     } catch (err) {
@@ -93,18 +98,15 @@ export function LoginForm() {
         </form>
 
         <div className="mt-6 text-center space-y-2">
-          <Link
+          {/* <Link
             href="/auth/forgot-password"
             className="text-sm text-muted-foreground hover:text-foreground"
           >
             Forgot your password?
-          </Link>
+          </Link> */}
           <div className="text-sm text-muted-foreground">
             Don't have an account?{" "}
-            <Link
-              href="/auth/register"
-              className="text-primary hover:underline"
-            >
+            <Link href="/signup" className="text-primary hover:underline">
               Sign up
             </Link>
           </div>

@@ -54,6 +54,11 @@ export const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      api.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${action.payload.token}`;
+      console.log("token in slice", action.payload.token);
     });
     builder.addCase(loginUser.rejected, (state, action) => {
       state.loading = false;
