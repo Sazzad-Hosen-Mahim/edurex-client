@@ -40,7 +40,7 @@ export function LoginForm() {
       if (resultAction.payload?.user.role === "admin") {
         router.push("/admin");
       } else if (resultAction.payload?.user.role === "user") {
-        router.push("/user");
+        router.push("/courses");
       } else {
         router.push("/");
       }

@@ -72,6 +72,7 @@ const courseSlice = createSlice({
 
       // Fetch by ID
       .addCase(fetchCourseById.fulfilled, (state, action) => {
+        console.log(action.payload, "current course in slice.....")
         state.currentCourse = action.payload;
       })
 
